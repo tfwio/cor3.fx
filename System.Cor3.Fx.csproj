@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{4DC28D9B-ADED-44A8-920B-AB34C209A26C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\cor3.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <AssemblyName>System.Cor3.Fx</AssemblyName>
+    <RootNamespace>System.Cor3</RootNamespace>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\oIo\Application Data\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <TargetFrameworkProfile />
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <NoStdLib>False</NoStdLib>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE;CONSOLE;cor3</DefineConstants>
+    <DocumentationFile>bin\Debug\System.Cor3.Fx.xml</DocumentationFile>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE;CONSOLE;cor3</DefineConstants>
+    <DocumentationFile>bin\Debug\System.Cor3.Fx.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Win64' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>x64</PlatformTarget>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>x86</PlatformTarget>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' " />
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' " />
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' " />
+  <PropertyGroup Condition=" '$(Platform)' == 'Win32' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>x86</PlatformTarget>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <ItemGroup>
+    <Reference Include="Microsoft.Ink, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <HintPath>C:\Program Files %28x86%29\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Cor3.Core\Properties\GAsm.cs">
+      <Link>Properties\GAsm.cs</Link>
+    </Compile>
+    <Compile Include="drawing\drawing.buffered\BitmapRenderer.cs" />
+    <Compile Include="drawing\drawing.buffered\ClockRenderer.cs" />
+    <Compile Include="drawing\drawing.rendering\mm_unit.cs" />
+    <Compile Include="drawing\drawing.text\ITxtComponent.cs" />
+    <Compile Include="drawing\drawing.text\TxtControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="drawing\drawing.text\TxtLayoutManager.cs" />
+    <Compile Include="drawing\drawing.text\TxtManager.cs" />
+    <Compile Include="drawing\drawing.text\TxtManagerUtility.cs" />
+    <Compile Include="drawing\drawing.text\TxtReader.cs" />
+    <Compile Include="drawing\ImageProvider.cs" />
+    <Compile Include="drawing\RenderRegionDict.cs" />
+    <Compile Include="drawing\Types\OldImgThumb.cs" />
+    <Compile Include="forms\ContextMenuHelper.cs">
+      <DependentUpon>ToolStripItemHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ControlUtil.cs" />
+    <Compile Include="forms\ControlUtil.FileIO.cs">
+      <DependentUpon>ControlUtil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ControlUtil.List.cs">
+      <DependentUpon>ControlUtil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ControlUtil.ToolStrip.cs">
+      <DependentUpon>ControlUtil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\BitmapControl2010.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\ImagePathEvent.cs" />
+    <Compile Include="forms\forms.controls.drawing\Threaded\AssertUpdate %28delegate%29.cs" />
+    <Compile Include="forms\forms.controls.drawing\Threaded\BitmapMan.cs" />
+    <Compile Include="forms\forms.controls.drawing\Threaded\ListImageThumbs.cs" />
+    <Compile Include="forms.uifx\img_dict.cs">
+      <DependentUpon>ui_fx_manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms.uifx\MOD_DICT.cs">
+      <DependentUpon>ui_fx_manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms.uifx\ui_fx_frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms.uifx\ui_fx_frm.designer.cs">
+      <DependentUpon>ui_fx_frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms.uifx\ui_fx_manager.cs" />
+    <Compile Include="forms.uifx\ui_fx_settings.cs" />
+    <Compile Include="forms\forms.controls\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\SearchControlManager.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.design\AttributeBase.cs" />
+    <Compile Include="forms\forms.design\GEditorFilter.cs">
+      <DependentUpon>AttributeBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.design\GroupTypes.cs">
+      <DependentUpon>AttributeBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.design\uc_browse_path.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.design\UIDataReferenceEditor.cs" />
+    <Compile Include="forms\forms.design\ui_file_editor_control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.design\ui_file_get.cs" />
+    <Compile Include="forms\forms.design\ui_file_get_editor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.design\ui_path_browse.cs" />
+    <Compile Include="forms\SplitString.cs" />
+    <Compile Include="forms\ToolStripItemHelper.cs" />
+    <Compile Include="forms\TreeViewStyle.cs" />
+    <Compile Include="global\Reflection\res_image_util.cs">
+    </Compile>
+    <Compile Include="global\Reflection\res_inspect.cs">
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\Threaded\ImageLoader.cs" />
+    <Compile Include="global\iFace\IPaneRenderer.cs" />
+    <Compile Include="forms.messir\SelectedTabChangedEventArgs.cs" />
+    <Compile Include="forms.messir\TabStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms.messir\TabStripButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms.messir\TabStripRenderer.cs" />
+    <Compile Include="global\utils\Scaffold.cs" />
+    <Compile Include="io\FileReaderMan.cs">
+      <DependentUpon>FileReaderUtil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="io\FileReaderUtil.cs" />
+    <Compile Include="io\TeXan.cs">
+      <DependentUpon>FileReaderUtil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="media\MediaData.cs" />
+    <Compile Include="media\MediaFile.cs" />
+    <Compile Include="Pavel Zolnikov—2002\Attributes.cs" />
+    <Compile Include="Pavel Zolnikov—2002\BandObject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pavel Zolnikov—2002\ComInterop.cs" />
+    <Compile Include="Pavel Zolnikov—2002\SHDocVw.cs" />
+    <Compile Include="drawing\drawing.renderers\ClientPathRenderer.cs" />
+    <Compile Include="drawing\drawing.renderers\ControlPathRenderer.cs" />
+    <Compile Include="drawing\drawing.renderers\FormPathRenderer.cs" />
+    <Compile Include="drawing\drawing.renderers\PathRenderer.cs" />
+    <Compile Include="drawing\drawing.rendering\BaseRenderer.cs" />
+    <Compile Include="drawing\drawing.rendering\BorderRenderer.cs">
+      <DependentUpon>BaseRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="drawing\drawing.rendering\LineRenderer.cs">
+      <DependentUpon>BaseRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="drawing\drawing.rendering\SomeRenderer.cs">
+      <DependentUpon>BaseRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="drawing\Angle.cs" />
+    <Compile Include="drawing\Base64.cs" />
+    <Compile Include="drawing\CanvasUtil.cs" />
+    <Compile Include="drawing\Circle.cs" />
+    <Compile Include="drawing\ClientInspector.cs" />
+    <Compile Include="drawing\ColorMarkupUtil.cs" />
+    <Compile Include="drawing\Events.cs" />
+    <Compile Include="drawing\font_util.cs" />
+    <Compile Include="drawing\ImageHelper.cs" />
+    <Compile Include="drawing\MovableWindowUtil.cs" />
+    <Compile Include="drawing\QualitySettings.cs" />
+    <Compile Include="drawing\ScaleUtility.cs" />
+    <Compile Include="drawing\TextFormat.cs" />
+    <Compile Include="drawing\TextUtil.cs" />
+    <Compile Include="global\bit.cs" />
+    <Compile Include="global\SerializableAbs.cs" />
+    <Compile Include="io\TimeZ.cs" />
+    <Compile Include="text\text.new\ColorHelper.cs" />
+    <Compile Include="text\text.new\DeltaQuery.cs" />
+    <Compile Include="text\text.new\DeltaRange.cs" />
+    <Compile Include="text\text.new\line_index_dic.cs" />
+    <Compile Include="text\text.new\ParserData.cs" />
+    <Compile Include="text\text.new\parserthing\line_parser.cs" />
+    <Compile Include="text\text.new\parserthing\parser_stream_base.cs" />
+    <Compile Include="text\text.new\parser\APass.cs" />
+    <Compile Include="text\text.new\parser\IPass.cs" />
+    <Compile Include="text\text.new\parser\PassBase.cs" />
+    <Compile Include="text\text.new\parser\PassCSS.cs" />
+    <Compile Include="text\text.new\PassCategory.cs" />
+    <Compile Include="text\text.new\PassType.cs" />
+    <Compile Include="text\text.new\QueryCriteria.cs" />
+    <Compile Include="text\text.new\QueryDictionary.cs" />
+    <Compile Include="text\text.new\QueryValue.cs" />
+    <Compile Include="text\text.new\rex.cs" />
+    <Compile Include="text\text.new\search.cs" />
+    <Compile Include="text\text.new\TextRange.cs" />
+    <Compile Include="text\text.new\TextStyle.cs" />
+    <Compile Include="text\text.new\textutil.cs" />
+    <Compile Include="text\text.new\uiparser.cs" />
+    <Compile Include="text\iface\IStringBuffer.cs" />
+    <Compile Include="text\LineRegion.cs" />
+    <Compile Include="text\STR.cs" />
+    <Compile Include="text\StringBuffer.cs" />
+    <Compile Include="text\StringUtil.cs" />
+    <None Include="forms\forms.controls.drawing\image_view.cs">
+      <SubType>UserControl</SubType>
+    </None>
+    <Compile Include="forms\forms.controls.drawing\time_unit.cs" />
+    <Compile Include="forms\forms.controls.drawing\Viewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Typography\Fonts\FontEntry.cs" />
+    <Compile Include="Typography\Fonts\FontFormatSettings.cs" />
+    <Compile Include="Typography\Fonts\FontList.cs" />
+    <Compile Include="Typography\Fonts\FontTable.cs" />
+    <Compile Include="Typography\Fonts\FontTableEntry.cs" />
+    <Compile Include="Typography\IFontEntry.cs" />
+    <Compile Include="Typography\IFontStyle.cs" />
+    <Compile Include="Typography\IFontTableEntry.cs" />
+    <Compile Include="Typography\IStyleEntry.cs" />
+    <Compile Include="Typography\Layout\RectangleLayout.cs" />
+    <Compile Include="Typography\Layout\RectangleLayoutPadded.cs" />
+    <Compile Include="Typography\Layout\RectLayoutGrid.cs" />
+    <Compile Include="Typography\MouseListener.cs" />
+    <Compile Include="Typography\Style\ColourEntry.cs" />
+    <Compile Include="Typography\Style\ColourOutline.cs" />
+    <Compile Include="Typography\Style\ColourStyle.cs" />
+    <Compile Include="Typography\Style\StyleEntryBase.cs" />
+    <Compile Include="Typography\Text\TextRow.cs" />
+    <Compile Include="global\utils\CmdUtil.cs" />
+    <Compile Include="global\utils\DirUtil.cs" />
+    <Compile Include="global\utils\EnumUtil.cs" />
+    <Compile Include="global\utils\FontCollection.cs" />
+    <Compile Include="global\utils\FontList.cs" />
+    <Compile Include="global\utils\RunProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="global\utils\ScaffoldMap.cs" />
+    <Compile Include="global\utils\w32_environment_util.cs" />
+    <Compile Include="w32\TypLib\apple\Apple.QTOControlLib.cs" />
+    <Compile Include="w32\TypLib\apple\Apple.QTOLibrary.cs" />
+    <Compile Include="w32\ClibBoardDummy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w32\ClipboardDummyNative.cs" />
+    <Compile Include="w32\ClipboardFormats.cs" />
+    <Compile Include="w32\CSIDL.cs">
+      <DependentUpon>Shell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Custom\CaptureWindow.cs" />
+    <Compile Include="w32\Custom\CWPSTRUCT.cs">
+      <DependentUpon>ShellContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Custom\DesktopWindow.cs" />
+    <Compile Include="w32\Custom\HookEventArgs.cs" />
+    <Compile Include="w32\Custom\HookType.cs" />
+    <Compile Include="w32\Custom\ListViewPath.cs" />
+    <Compile Include="w32\Custom\LocalWindowsHook.cs">
+      <DependentUpon>ShellContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Custom\ShellContextMenu.cs" />
+    <Compile Include="w32\Custom\ShellContextMenuException.cs">
+      <DependentUpon>ShellContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Custom\WM.cs" />
+    <Compile Include="w32\Custom\wm_message.cs" />
+    <Compile Include="w32\efx.simpletype.defs.cs" />
+    <Compile Include="w32\FormatMessgageConsts.cs">
+      <DependentUpon>Kernel32.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\ILockBytes.cs" />
+    <Compile Include="w32\IStorage.cs" />
+    <Compile Include="w32\Kernel32.cs" />
+    <Compile Include="w32\libLoaders\BasicFileDialog.cs" />
+    <Compile Include="w32\libLoaders\LibLoader2.cs" />
+    <Compile Include="w32\libLoaders\LoadLibFlags.cs" />
+    <Compile Include="w32\libLoaders\ResLoader.cs">
+      <DependentUpon>LibLoader2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\libLoaders\res_table.cs">
+      <DependentUpon>LibLoader2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\libLoaders\thought.cs">
+      <DependentUpon>LibLoader2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\libLoaders\WinRes32_Lib.cs">
+      <DependentUpon>LibLoader2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\MakeDir.cs" />
+    <Compile Include="w32\ole32.cs" />
+    <Compile Include="w32\REBARANDINFO.cs">
+      <DependentUpon>Shell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Resources\ACCELTABLEENTRY.cs" />
+    <Compile Include="w32\Resources\CURSORDIR.cs">
+      <DependentUpon>RESINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Resources\CURSORSHAPE.cs" />
+    <Compile Include="w32\Resources\DIRENTRY.cs">
+      <DependentUpon>FONTGROUPHDR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Resources\FONTDIRENTRY.cs" />
+    <Compile Include="w32\Resources\FONTGROUPHDR.cs" />
+    <Compile Include="w32\Resources\ICONRESDIR.cs">
+      <DependentUpon>RESINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Resources\LOCALHEADER.cs" />
+    <Compile Include="w32\Resources\MENUHEADER.cs" />
+    <Compile Include="w32\Resources\MENUHELPID.cs" />
+    <Compile Include="w32\Resources\MESSAGE_RESOURCE_BLOCK.cs">
+      <DependentUpon>MESSAGE_RESOURCE_DATA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Resources\MESSAGE_RESOURCE_DATA.cs" />
+    <Compile Include="w32\Resources\MESSAGE_RESOURCE_ENTRY.cs" />
+    <Compile Include="w32\Resources\NameOrOrdinal.cs" />
+    <Compile Include="w32\Resources\NEWHEADER.cs" />
+    <Compile Include="w32\Resources\NORMALMENUITEM.cs" />
+    <Compile Include="w32\Resources\POPUPMENUITEM.cs" />
+    <Compile Include="w32\Resources\RC_ENUM.cs" />
+    <Compile Include="w32\Resources\RESDIR.cs" />
+    <Compile Include="w32\Resources\RESINFO.cs">
+      <DependentUpon>RESDIR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\Resources\RESOURCEHEADER.cs" />
+    <Compile Include="w32\Resources\RESOURCE_ENUM.cs" />
+    <Compile Include="w32\Resources\SString.cs" />
+    <Compile Include="w32\Resources\StringFileInfo.cs" />
+    <Compile Include="w32\Resources\StringTable.cs" />
+    <Compile Include="w32\Resources\Var.cs" />
+    <Compile Include="w32\Resources\VarFileInfo.cs" />
+    <Compile Include="w32\Resources\VS_FIXEDFILEINFO.cs" />
+    <Compile Include="w32\Resources\VS_VERSIONINFO.cs" />
+    <Compile Include="w32\Shell.cs" />
+    <Compile Include="w32\Shell.MenuItem.cs" />
+    <Compile Include="w32\Shell.SHFileInfo.cs" />
+    <Compile Include="w32\Shell.SHFileInfo.SHGFI.cs" />
+    <Compile Include="w32\ShellDesktopBand.cs">
+      <DependentUpon>Shell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\ShID3.cs" />
+    <Compile Include="w32\sh_folder.cs" />
+    <Compile Include="w32\TypLib\Interop.AxShockwaveFlashObjects.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="w32\TypLib\CMF.cs">
+      <DependentUpon>IContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\CMIC.cs">
+      <DependentUpon>CMINVOKECOMMANDINFOEX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\CMINVOKECOMMANDINFOEX.cs">
+      <DependentUpon>IContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\GCS.cs">
+      <DependentUpon>IContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\IContextMenu.cs" />
+    <Compile Include="w32\TypLib\IContextMenu2.cs">
+      <DependentUpon>IContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\IContextMenu3.cs">
+      <DependentUpon>IContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\IShellFolder.cs" />
+    <Compile Include="w32\TypLib\Interop.QuartzTypeLib.cs" />
+    <Compile Include="w32\TypLib\SFGAO.cs">
+      <DependentUpon>IShellFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\SHCONTF.cs">
+      <DependentUpon>IShellFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\Interop.Shell32.cs" />
+    <Compile Include="w32\TypLib\SHGNO.cs">
+      <DependentUpon>IShellFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\Interop.ShockwaveFlashObjects.cs" />
+    <Compile Include="w32\TypLib\Interop.stdole.cs" />
+    <Compile Include="w32\TypLib\STGMEDIUM.cs" />
+    <Compile Include="w32\TypLib\SW.cs">
+      <DependentUpon>CMINVOKECOMMANDINFOEX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\TypLib\TYMED.cs">
+      <DependentUpon>STGMEDIUM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\User32.cs" />
+    <Compile Include="w32\Util\FileUtil.cs" />
+    <Compile Include="w32\Util\ImageListUtil.cs" />
+    <Compile Include="w32\Util\Mart.cs" />
+    <Compile Include="w32\Util\MemoryConverter.cs" />
+    <Compile Include="w32\UUID.cs">
+      <DependentUpon>Shell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\w32.controls\CommonControlMessageConst.cs" />
+    <Compile Include="w32\w32.controls\EC_EM.cs" />
+    <Compile Include="w32\w32.controls\EditControlMsg.cs" />
+    <Compile Include="w32\w32.controls\ILM.cs" />
+    <Compile Include="w32\w32.controls\InitCommonControlsExConst.cs" />
+    <Compile Include="w32\w32.controls\ListViewMessages.cs" />
+    <Compile Include="w32\w32.controls\LVSIL.cs" />
+    <Compile Include="w32\w32.controls\TVM.cs" />
+    <Compile Include="w32\w32.controls\TVSIL.cs" />
+    <Compile Include="w32\w32.cs" />
+    <Compile Include="w32\w32.enum\ShowWindowStyles.cs" />
+    <Compile Include="w32\w32.enum\stuff.cs" />
+    <Compile Include="w32\w32.enum\TPM.cs" />
+    <Compile Include="w32\w32.enum\UserControlMessage.cs" />
+    <Compile Include="w32\w32.enum\WindowFlags.cs" />
+    <Compile Include="w32\w32.enum\WindowPos.cs" />
+    <Compile Include="w32\w32.enum\WindowStyle.cs" />
+    <Compile Include="w32\w32.enum\WindowStyles.cs" />
+    <Compile Include="w32\w32.enum\WindowStylesExtended.cs" />
+    <Compile Include="w32\w32.enum\wm_events.cs" />
+    <Compile Include="w32\w32.enum\WM_MSG.cs" />
+    <Compile Include="w32\w32.gdi\BitmapCompressionMethod.cs" />
+    <Compile Include="w32\w32.gdi\BITMAPFILEHEADER.cs" />
+    <Compile Include="w32\w32.gdi\BITMAPINFO.cs" />
+    <Compile Include="w32\w32.gdi\BITMAPINFOHEADER.cs" />
+    <Compile Include="w32\w32.gdi\BITMAPV5HEADER.cs" />
+    <Compile Include="w32\w32.gdi\BmpFileHeader.cs" />
+    <Compile Include="w32\w32.gdi\BmpInfoHeader.cs" />
+    <Compile Include="w32\w32.gdi\FF_PITCHANDFAMILY.cs" />
+    <Compile Include="w32\w32.gdi\FontCharSet.cs" />
+    <Compile Include="w32\w32.gdi\FontClipPrecision.cs" />
+    <Compile Include="w32\w32.gdi\FontPitchAndFamily.cs" />
+    <Compile Include="w32\w32.gdi\FontPrecision.cs" />
+    <Compile Include="w32\w32.gdi\FontQuality.cs" />
+    <Compile Include="w32\w32.gdi\FontWeight.cs" />
+    <Compile Include="w32\w32.gdi\Gdi32.cs" />
+    <Compile Include="w32\w32.gdi\LOGFONT.cs" />
+    <Compile Include="w32\w32.gdi\LongColorScheme.cs" />
+    <Compile Include="w32\w32.gdi\RGBQUAD.cs" />
+    <Compile Include="w32\w32.SimpleTypes.cs" />
+    <Compile Include="w32\w32.types\DLLVERSIONINFO.cs" />
+    <Compile Include="w32\w32.types\FILEDESCRIPTORW.cs" />
+    <Compile Include="w32\w32.types\FILEGROUPDESCRIPTORW.cs" />
+    <Compile Include="w32\w32.types\IClibBoardDummy.cs" />
+    <Compile Include="w32\w32.types\LPWALLPAPEROPT.cs" />
+    <Compile Include="w32\w32.types\MENUITEMINFO.cs" />
+    <Compile Include="w32\w32.types\MFS.cs">
+      <DependentUpon>MENUITEMINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\w32.types\MFT.cs">
+      <DependentUpon>MENUITEMINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\w32.types\MIIM.cs">
+      <DependentUpon>MENUITEMINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w32\w32.types\POINT.cs" />
+    <Compile Include="w32\w32.types\POINTL.cs" />
+    <Compile Include="w32\w32.types\RECT.cs" />
+    <Compile Include="w32\w32.types\SIZEL.cs" />
+    <Compile Include="w32\w32.types\WNDCLASSEX.cs" />
+    <Compile Include="w32\w32_const.cs" />
+    <Compile Include="forms\forms.controls.drawing\BitmapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\BitmapControlManager.cs">
+      <DependentUpon>BitmapControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\ClockTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\FontSettings.cs">
+      <DependentUpon>OutlineSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\OutlineSettings.cs" />
+    <Compile Include="forms\forms.controls.drawing\shape_axis.cs">
+      <DependentUpon>shape_path.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\shape_crosshair.cs">
+      <DependentUpon>shape_path.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\shape_cspline.cs">
+      <DependentUpon>shape_path.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls.drawing\shape_path.cs" />
+    <Compile Include="forms\forms.controls.drawing\shape_text.cs">
+      <DependentUpon>shape_path.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls.listview\LvSort.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls.listview\LvTrack.cs">
+      <DependentUpon>LvSort.cs</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls.listview\LvTrack2.cs">
+      <DependentUpon>LvTrack.cs</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\BrowsePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\DirectoryCollectionManager.cs">
+      <DependentUpon>DirectoryCollectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\forms.controls\DirectoryCollectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\DirListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\DirListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\FontCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\FontComboRenderer.cs" />
+    <Compile Include="forms\forms.controls\HoverList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\forms.controls\SelectionInfo.cs" />
+    <Compile Include="forms\forms.design\PathEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\forms.design\UIPathEditor.cs" />
+    <Compile Include="forms\forms.settings\bounds.cs" />
+    <Compile Include="forms\forms.settings\splitter_vals.cs" />
+    <Compile Include="forms\forms.settings\win_pos.cs" />
+    <Compile Include="global\iFace\iApi\ApiElement.cs" />
+    <Compile Include="global\iFace\iApi\ApiEventArgs.cs" />
+    <Compile Include="global\iFace\iApi\ApiManager.cs" />
+    <Compile Include="global\iFace\iApi\IApiElement.cs" />
+    <Compile Include="global\iFace\iApi\IApiFilter.cs" />
+    <Compile Include="global\iFace\IBufferedControlRenderer.cs" />
+    <Compile Include="global\iFace\IBufferedFormRenderer.cs" />
+    <Compile Include="global\iFace\IBufferedRenderer.cs" />
+    <Compile Include="global\iFace\IClientInspector.cs" />
+    <Compile Include="global\iFace\IControlInfo.cs" />
+    <Compile Include="global\iFace\IControlSizeEvents.cs" />
+    <Compile Include="global\iFace\ICustomPaint.cs" />
+    <Compile Include="global\iFace\IDisplayStyles.cs" />
+    <Compile Include="global\iFace\IDrawingTool.cs" />
+    <Compile Include="global\iFace\IFormInfo.cs" />
+    <Compile Include="global\iFace\IFormSizeEvents.cs" />
+    <Compile Include="global\iFace\IGraphicControl.cs" />
+    <Compile Include="global\iFace\IGridRenderer.cs" />
+    <Compile Include="global\iFace\ILayerInfo.cs" />
+    <Compile Include="global\iFace\ILayerSettings.cs" />
+    <Compile Include="global\iFace\IObjectManager.cs" />
+    <Compile Include="global\iFace\IOverlay.cs" />
+    <Compile Include="global\iFace\IRenderRegion.cs" />
+    <Compile Include="global\iFace\ObjectManager.cs" />
+    <Compile Include="global\iFace\ObjectManager2.cs" />
+    <Compile Include="global\iFace\iForms\IControlEvents.cs" />
+    <Compile Include="global\iFace\iForms\IControlMouseEvents.cs" />
+    <Compile Include="global\iFace\iForms\IControlRegionEvent.cs" />
+    <Compile Include="global\iFace\iForms\iOverlay.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="drawing\Types\BmpNfo.cs" />
+    <Compile Include="drawing\Types\Enums.cs" />
+    <Compile Include="drawing\Types\ImageSettings.cs">
+      <DependentUpon>secImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="drawing\Types\ImgThumb.cs">
+      <DependentUpon>secImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="drawing\Types\secImg.cs" />
+    <Compile Include="global\utils\ClientApiControlManager.cs" />
+    <Compile Include="global\utils\IClientApiControlManager.cs" />
+    <Compile Include="global\utils\TextHighlightManager.cs" />
+    <EmbeddedResource Include="forms.uifx\ui_fx_frm.resx">
+      <DependentUpon>ui_fx_frm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\forms.controls\SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\forms.design\uc_browse_path.resx">
+      <DependentUpon>uc_browse_path.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pavel Zolnikov—2002\BandObject.resx">
+      <DependentUpon>BandObject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\forms.controls.drawing\BitmapControl.resx">
+      <DependentUpon>BitmapControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\forms.controls\BrowsePanel.resx">
+      <DependentUpon>BrowsePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\forms.controls\DirectoryCollectionPanel.resx">
+      <DependentUpon>DirectoryCollectionPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cor3.Core\System.Cor3-Net20.csproj">
+      <Project>{CAFD2E08-18A8-474D-AA83-6ADFAFD9C198}</Project>
+      <Name>System.Cor3-Net20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cor3.Forms\System.Cor3.Forms.csproj">
+      <Project>{695D90E7-4BB4-40CF-A205-C2CB4BEA86F6}</Project>
+      <Name>System.Cor3.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fam3\fam3.csproj">
+      <Project>{085CE9EC-7B13-4D87-80EC-EF89F3896348}</Project>
+      <Name>fam3</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

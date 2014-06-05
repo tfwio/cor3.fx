@@ -1,0 +1,247 @@
+/*
+ * User: tfw
+ * Date: 9/19/2008
+ */
+using System;
+using System.Collections;
+using System.Collections.Specialized;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Drawing.Design;
+using System.IO;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Windows.Forms.Design;
+using efx.Environment.Scheme;
+using efx.Environment.Namespace;
+namespace efx.Design
+{
+		// Example control for entering a string.
+	internal class MacroTypeEditor : System.Windows.Forms.UserControl
+	{
+	    public System.Windows.Forms.TextBox inputTextBox;
+	    private System.Windows.Forms.Button ok_button;
+	    private System.Windows.Forms.Button cancel_button;
+	    private IWindowsFormsEditorService edSvc;
+	    
+	    public MacroTypeEditor(string text, IWindowsFormsEditorService edSvc)
+	    {
+	        InitializeComponent();
+	        inputTextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+	        inputTextBox.Text = text;
+	        UpdateList();
+	        cbuser.CheckedChanged += delegate { UpdateList(); };
+	        cbmsvs.CheckedChanged += delegate { UpdateList(); };
+	        cbsys.CheckedChanged += delegate { UpdateList(); };
+	        // Stores IWindowsFormsEditorService reference to use to 
+	        // close the control.
+	        this.edSvc = edSvc;
+	    }
+	    public void UpdateList()
+	    {
+	    	combolist.Items.Clear();
+//	    	if (cbmsvs.Checked) foreach (object mope in Globe.Lib.fx.MSVSMACROS.vals.Keys)
+//	        {
+//	        	combolist.Items.Add(string.Format("$({0})",mope));
+//	        }
+//	    	if (cbuser.Checked) foreach (object mope in Globe.Lib.fx.Constants)
+//	        {
+//	    		if (mope is IConstant) 
+//	    		{
+//	    			IConstant poo =(mope) as IConstant;
+//	    			if (poo.Alias!=null)
+//	    			{
+//	    				if (poo.Alias!=string.Empty) combolist.Items.Add(string.Format("$({0})",poo.Alias));
+//	    			}
+//	    			//this.combolist.Items.Add(string.Format("$({0})",mope));
+//	    		}
+//	        }
+	    	if (cbsys.Checked) 
+	    	{
+				StringDictionary sd = RunProcess.EnvVars("explorer.exe",@"c:\windows\");
+				foreach (DictionaryEntry de in sd)
+				{
+					combolist.Items.Add(string.Format("$({0})",de.Key));
+				}
+				sd.Clear();
+				sd = null;
+	    	}
+	    }
+	
+	    private void InitializeComponent()
+	    {
+	    	this.ok_button = new System.Windows.Forms.Button();
+	    	this.cancel_button = new System.Windows.Forms.Button();
+	    	this.button1 = new System.Windows.Forms.Button();
+	    	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+	    	this.inputTextBox = new System.Windows.Forms.TextBox();
+	    	this.combolist = new System.Windows.Forms.ComboBox();
+	    	this.cbsys = new System.Windows.Forms.CheckBox();
+	    	this.cbuser = new System.Windows.Forms.CheckBox();
+	    	this.cbmsvs = new System.Windows.Forms.CheckBox();
+	    	this.tableLayoutPanel1.SuspendLayout();
+	    	this.SuspendLayout();
+	    	// 
+	    	// ok_button
+	    	// 
+	    	this.ok_button.AutoSize = true;
+	    	this.ok_button.DialogResult = System.Windows.Forms.DialogResult.OK;
+	    	this.ok_button.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.ok_button.Location = new System.Drawing.Point(231, 20);
+	    	this.ok_button.Margin = new System.Windows.Forms.Padding(0);
+	    	this.ok_button.Name = "ok_button";
+	    	this.ok_button.Size = new System.Drawing.Size(60, 21);
+	    	this.ok_button.TabIndex = 1;
+	    	this.ok_button.Text = "Cancel";
+	    	this.ok_button.Click += new System.EventHandler(this.CloseControl);
+	    	// 
+	    	// cancel_button
+	    	// 
+	    	this.cancel_button.AutoSize = true;
+	    	this.cancel_button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+	    	this.cancel_button.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.cancel_button.Location = new System.Drawing.Point(291, 20);
+	    	this.cancel_button.Margin = new System.Windows.Forms.Padding(0);
+	    	this.cancel_button.Name = "cancel_button";
+	    	this.cancel_button.Size = new System.Drawing.Size(60, 21);
+	    	this.cancel_button.TabIndex = 2;
+	    	this.cancel_button.Text = "Okay";
+	    	this.cancel_button.Click += new System.EventHandler(this.CloseControl);
+	    	// 
+	    	// button1
+	    	// 
+	    	this.button1.AutoSize = true;
+	    	this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.button1.Location = new System.Drawing.Point(171, 20);
+	    	this.button1.Margin = new System.Windows.Forms.Padding(0);
+	    	this.button1.Name = "button1";
+	    	this.button1.Size = new System.Drawing.Size(60, 21);
+	    	this.button1.TabIndex = 3;
+	    	this.button1.Text = "Browse";
+	    	this.button1.Click += new System.EventHandler(this.Button1Click);
+	    	// 
+	    	// tableLayoutPanel1
+	    	// 
+	    	this.tableLayoutPanel1.ColumnCount = 4;
+	    	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+	    	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+	    	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+	    	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+	    	this.tableLayoutPanel1.Controls.Add(this.cancel_button, 3, 1);
+	    	this.tableLayoutPanel1.Controls.Add(this.ok_button, 2, 1);
+	    	this.tableLayoutPanel1.Controls.Add(this.inputTextBox, 0, 0);
+	    	this.tableLayoutPanel1.Controls.Add(this.combolist, 0, 1);
+	    	this.tableLayoutPanel1.Controls.Add(this.button1, 1, 1);
+	    	this.tableLayoutPanel1.Controls.Add(this.cbsys, 3, 2);
+	    	this.tableLayoutPanel1.Controls.Add(this.cbuser, 2, 2);
+	    	this.tableLayoutPanel1.Controls.Add(this.cbmsvs, 1, 2);
+	    	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+	    	this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+	    	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+	    	this.tableLayoutPanel1.RowCount = 3;
+	    	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+	    	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+	    	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+	    	this.tableLayoutPanel1.Size = new System.Drawing.Size(351, 67);
+	    	this.tableLayoutPanel1.TabIndex = 0;
+	    	// 
+	    	// inputTextBox
+	    	// 
+	    	this.inputTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+	    	this.inputTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+	    	this.tableLayoutPanel1.SetColumnSpan(this.inputTextBox, 4);
+	    	this.inputTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.inputTextBox.Location = new System.Drawing.Point(0, 0);
+	    	this.inputTextBox.Margin = new System.Windows.Forms.Padding(0);
+	    	this.inputTextBox.Name = "inputTextBox";
+	    	this.inputTextBox.Size = new System.Drawing.Size(351, 20);
+	    	this.inputTextBox.TabIndex = 4;
+	    	// 
+	    	// combolist
+	    	// 
+	    	this.combolist.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.combolist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+	    	this.combolist.Location = new System.Drawing.Point(0, 20);
+	    	this.combolist.Margin = new System.Windows.Forms.Padding(0);
+	    	this.combolist.Name = "combolist";
+	    	this.combolist.Size = new System.Drawing.Size(171, 21);
+	    	this.combolist.Sorted = true;
+	    	this.combolist.TabIndex = 0;
+	    	this.combolist.TabStop = false;
+	    	// 
+	    	// cbsys
+	    	// 
+	    	this.cbsys.BackColor = System.Drawing.Color.Transparent;
+	    	this.cbsys.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.cbsys.Location = new System.Drawing.Point(291, 41);
+	    	this.cbsys.Margin = new System.Windows.Forms.Padding(0);
+	    	this.cbsys.Name = "cbsys";
+	    	this.cbsys.Size = new System.Drawing.Size(60, 26);
+	    	this.cbsys.TabIndex = 5;
+	    	this.cbsys.Text = "sys";
+	    	// 
+	    	// cbuser
+	    	// 
+	    	this.cbuser.BackColor = System.Drawing.Color.Transparent;
+	    	this.cbuser.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.cbuser.Location = new System.Drawing.Point(231, 41);
+	    	this.cbuser.Margin = new System.Windows.Forms.Padding(0);
+	    	this.cbuser.Name = "cbuser";
+	    	this.cbuser.Size = new System.Drawing.Size(60, 26);
+	    	this.cbuser.TabIndex = 5;
+	    	this.cbuser.Text = "user";
+	    	this.cbuser.UseVisualStyleBackColor = false;
+	    	// 
+	    	// cbmsvs
+	    	// 
+	    	this.cbmsvs.BackColor = System.Drawing.Color.Transparent;
+	    	this.cbmsvs.Dock = System.Windows.Forms.DockStyle.Fill;
+	    	this.cbmsvs.Location = new System.Drawing.Point(171, 41);
+	    	this.cbmsvs.Margin = new System.Windows.Forms.Padding(0);
+	    	this.cbmsvs.Name = "cbmsvs";
+	    	this.cbmsvs.Size = new System.Drawing.Size(60, 26);
+	    	this.cbmsvs.TabIndex = 5;
+	    	this.cbmsvs.Text = "msvs";
+	    	this.cbmsvs.UseVisualStyleBackColor = false;
+	    	// 
+	    	// MacroLookupTypeEditor
+	    	// 
+	    	this.Controls.Add(this.tableLayoutPanel1);
+	    	this.Name = "MacroLookupTypeEditor";
+	    	this.Size = new System.Drawing.Size(351, 67);
+	    	this.tableLayoutPanel1.ResumeLayout(false);
+	    	this.tableLayoutPanel1.PerformLayout();
+	    	this.ResumeLayout(false);
+	    }
+	    private System.Windows.Forms.CheckBox cbsys;
+	    private System.Windows.Forms.CheckBox cbmsvs;
+	    private System.Windows.Forms.CheckBox cbuser;
+	    public System.Windows.Forms.ComboBox combolist;
+	    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+	    private System.Windows.Forms.Button button1;
+	
+	    private void CloseControl(object sender, EventArgs e)
+	    {
+	        edSvc.CloseDropDown();
+	    
+	    }
+	    void Button1Click(object sender, EventArgs e)
+	    {
+	    	FolderBrowserDialog fbd = new FolderBrowserDialog();
+	    	if (inputTextBox.Text!=string.Empty){
+		    	if (System.IO.Directory.Exists(inputTextBox.Text))
+		    	{
+		    		fbd.SelectedPath = inputTextBox.Text;
+		    	}
+	    	}
+	    	if (fbd.ShowDialog()== DialogResult.OK)
+	    	{
+	    		inputTextBox.Text = fbd.SelectedPath;
+	    	}
+	    	fbd.Dispose();
+	    }
+	}
+}
