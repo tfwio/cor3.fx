@@ -83,12 +83,12 @@ namespace drawing.forms.controls
 			foreach (FloatPoint f in value) tvalue.Y = (tvalue.Y > f.Y) ? tvalue.Y : f.Y;
 			return tvalue;
 		}
-		
 		/// <summary>
 		/// Check if the with dimension of the row 'r' fits within the canvas width 'X'.
 		/// </summary>
-		/// <param name="r">Row dimension</param>
-		/// <param name="X">Canvas width</param>
+		/// <param name="rowRect"></param>
+		/// <param name="columnX"></param>
+		/// <param name="columnMax"></param>
 		/// <returns></returns>
 		public bool HasColumnWidth(FloatRect rowRect, float columnX, float columnMax)
 		{

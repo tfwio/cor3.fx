@@ -25,7 +25,9 @@ namespace w32.kernel
 		public const int LOAD_WITH_ALTERED_SEARCH_PATH = 0x00000008;
 	}
 		[Flags]
+	/// <summary>
 	/// ms-help://MS.LHSMSSDK.1033/MS.LHSWinSDK.1033/dllproc/base/loadlibraryex.htm
+	/// </summary>
 	public enum LOAD_LIB_FLAGS
 	{
 		/// <summary>

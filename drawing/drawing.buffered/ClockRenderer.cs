@@ -1,5 +1,5 @@
 ﻿#region tfw * 8/1/2009 * 4:22 PM ** 'LICENSE & File Header'
-/** [insert license here] **
+/* [insert license here] **
  * if no license is mentioned above
  * you are to assume a HYBRID GPL/MIT license which in general allows you to use
  * the code without limitation (commercially or not) provided that if there are

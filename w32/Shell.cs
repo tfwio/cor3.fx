@@ -9,12 +9,13 @@ namespace w32
 {
 	// Shell.Deskband
 	// Shell.ImageList
+	// disable once ConvertToStaticType
 	public class Shell32 : Win32
 	{
 		public static IntPtr ImgListPtr(string path, SHGFI flags)
 		{
 			SHFileInfo shinfo = new SHFileInfo();
-			return Shell32.SHGetFileInfo( path, 0, ref shinfo, (uint)Marshal.SizeOf(shinfo), flags );
+			return w32.Shell32.SHGetFileInfo( path, 0, ref shinfo, (uint)Marshal.SizeOf(shinfo), flags );
 		}
 		internal const string shlwapi = "shlwapi.dll";
 		

@@ -1,5 +1,5 @@
 ﻿/* oOo * 11/14/2007 : 9:53 PM */
-/**
+/* [insert license here] **
  * NameSpace Description:
  * 	this class is to generally encapsulate classes which are to contain
  * 	redundant 'library' functions to 'help'.

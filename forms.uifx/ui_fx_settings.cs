@@ -1,4 +1,4 @@
-/**
+/* [insert license here] **
  * tfw * 2/25/2009 * 2:08 PM
 **/
 using System;
