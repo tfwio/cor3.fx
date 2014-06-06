@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 namespace w32.shell
 {
 	/// as wm from comtextmenu sources, see w32nt5 for ShellCommands
+	// disable once ConvertToStaticType
 	public class wm_message
 	{
 	    public const uint ACTIVATE = 0x6;
